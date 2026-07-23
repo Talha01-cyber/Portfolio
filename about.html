@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Mohammad Talha</title>
+  <meta name="description"
+    content="Learn about Mohammad Talha — CS undergraduate, web developer, data analyst, and event coordinator at ULAB.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transition.css">
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+  <style>
+    /* ── About page: center everything ── */
+    .about-page {
+      padding-top: 140px;
+      padding-bottom: 110px;
+    }
+
+    .about-hero {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 80px;
+    }
+
+    .about-hero .eyebrow {
+      justify-content: center;
+      display: flex;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .about-hero .section-title {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about-hero .section-desc {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    /* ── Stats row ── */
+    .about-stats-row {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      margin-bottom: 72px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 32px 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: transform .35s var(--ease), border-color .35s ease;
+      min-width: 160px;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-strong);
+    }
+
+    .stat-card .stat-num {
+      font-size: 2.8rem;
+    }
+
+    .stat-card p {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    /* ── Skills block ── */
+    .about-skills-section {
+      max-width: 860px;
+      margin: 0 auto 80px;
+    }
+
+    .about-skills-section h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 36px;
+      color: var(--text);
+    }
+
+    .about-skills-section h3 span {
+      color: var(--neon);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 20px;
+      max-width: 100%;
+    }
+
+    .skill-badge {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 16px;
+      text-align: center;
+      transition: transform .35s var(--ease), border-color .35s ease, box-shadow .35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .skill-badge:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-strong);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, .5), 0 0 15px rgba(77, 255, 136, .15);
+    }
+
+    .skill-badge i {
+      font-size: 2.2rem;
+      color: var(--neon);
+      text-shadow: 0 0 12px rgba(77, 255, 136, .4);
+      transition: transform .35s ease;
+    }
+
+    .skill-badge:hover i {
+      transform: scale(1.1);
+    }
+
+    .skill-badge span {
+      font-family: var(--font-display);
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ── Bio paragraph block ── */
+    .about-bio {
+      max-width: 760px;
+      margin: 0 auto 72px;
+      text-align: center;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1rem;
+    }
+
+    /* ── CTA row ── */
+    .about-cta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* ── Divider ── */
+    .neon-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--neon-dim), var(--neon));
+      border-radius: 4px;
+      margin: 0 auto 48px;
+      box-shadow: 0 0 12px rgba(77, 255, 136, .5);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Page Transition Bar ── -->
+  <div id="pageLoader"></div>
+  <div id="pageOverlay"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Mohammad Talha<span>.</span></a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="achievements.html" class="nav-link">Achievements</a>
+        <a href="portfolio.html" class="nav-link">My Work</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= ABOUT ================= -->
+  <main class="about-page">
+    <div class="section-inner">
+
+      <!-- Hero intro -->
+      <div class="about-hero reveal">
+        <p class="eyebrow"><span class="bracket">&lt;</span>About Me<span class="bracket">/&gt;</span></p>
+        <h1 class="section-title">Turning data into <span class="glow-text">decisions</span>,<br>and ideas into systems.
+        </h1>
+        <div class="neon-divider"></div>
+        <p class="section-desc">
+          I'm a Computer Science undergraduate at the University of Liberal Arts Bangladesh —
+          analytical and detail-oriented with a strong pull toward problem-solving and
+          data-driven operations. I've built fault-tolerant web platforms, trained ML
+          models, and led large-scale event administration under real pressure — with
+          bilingual communication skills to make sure nothing gets lost along the way.
+        </p>
+      </div>
+
+      <!-- Stats -->
+      <div class="about-stats-row">
+        <div class="stat-card reveal">
+          <span class="stat-num" data-count="3">0</span><span class="stat-plus">+</span>
+          <p>Projects Built</p>
+        </div>
+        <div class="stat-card reveal" style="--delay:.08s">
+          <span class="stat-num" data-count="4">0</span><span class="stat-plus">+</span>
+          <p>Events Led</p>
+        </div>
+        <div class="stat-card reveal" style="--delay:.16s">
+          <span class="stat-num" data-count="1">0</span><span class="stat-plus">+</span>
+          <p>Certifications</p>
+        </div>
+        <div class="stat-card reveal" style="--delay:.24s">
+          <span class="stat-num" data-count="1000">0</span><span class="stat-plus">+</span>
+          <p>People Coordinated</p>
+        </div>
+      </div>
+
+      <!-- Extended bio -->
+      <div class="about-bio reveal">
+        <p>
+          My journey in tech started with a passion for understanding how systems work under the hood.
+          At ULAB I've sharpened that curiosity into practical skills — writing production-grade Python,
+          designing resilient MySQL schemas, and building full-stack platforms that stay online even when
+          components fail. Outside the terminal I coordinate large crowds, communicate across language barriers,
+          and turn logistical chaos into smooth-running events.
+        </p>
+      </div>
+
+      <!-- Skills -->
+      <div class="about-skills-section reveal">
+        <h3>Core <span>Skills &amp; Technologies</span></h3>
+        <div class="skills-grid">
+          <div class="skill-badge">
+            <i class="fa-brands fa-html5"></i>
+            <span>HTML5</span>
+          </div>
+          <div class="skill-badge">
+            <i class="fa-brands fa-css3-alt"></i>
+            <span>CSS3</span>
+          </div>
+          <div class="skill-badge">
+            <i class="fa-brands fa-js"></i>
+            <span>JavaScript</span>
+          </div>
+          <div class="skill-badge">
+            <i class="fa-brands fa-python"></i>
+            <span>Python</span>
+          </div>
+          <div class="skill-badge">
+            <i class="fa-brands fa-react"></i>
+            <span>React</span>
+          </div>
+          <div class="skill-badge">
+            <i class="fa-brands fa-php"></i>
+            <span>PHP</span>
+          </div>
+          <div class="skill-badge">
+            <i class="fa-brands fa-java"></i>
+            <span>Java</span>
+          </div>
+          <div class="skill-badge">
+            <i class="fa-solid fa-database"></i>
+            <span>SQL / MySQL</span>
+          </div>
+          <div class="skill-badge">
+            <i class="fa-solid fa-brain"></i>
+            <span>Machine Learning</span>
+          </div>
+          <div class="skill-badge">
+            <i class="fa-brands fa-microsoft"></i>
+            <span>Microsoft Suite</span>
+          </div>
+          <div class="skill-badge">
+            <i class="fa-solid fa-clapperboard"></i>
+            <span>CapCut</span>
+          </div>
+          <div class="skill-badge">
+            <i class="fa-solid fa-chart-pie"></i>
+            <span>Data Analytics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="about-cta reveal">
+        <a href="achievements.html" class="btn btn-primary">
+          <span>My Achievements</span>
+          <i class="fa-solid fa-trophy"></i>
+        </a>
+        <a href="contact.html" class="btn btn-outline">Let's Talk</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="section-inner footer-inner">
+      <a href="index.html" class="logo">Talha<span>.</span></a>
+      <p>&copy; <span id="year"></span> Mohammad Talha. All rights reserved.</p>
+      <a href="#" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    /* minimal page script — no initial loader, just reveal + stats */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* navbar toggle */
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    /* scroll reveals */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+    /* count-up */
+    const countEls = document.querySelectorAll('[data-count]');
+    const countObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target, target = parseInt(el.dataset.count, 10);
+        let cur = 0;
+        const step = Math.max(1, Math.ceil(target / 80));
+        const tick = () => { cur = Math.min(cur + step, target); el.textContent = cur; if (cur < target) requestAnimationFrame(tick); };
+        tick(); countObs.unobserve(el);
+      });
+    }, { threshold: 0.4 });
+    countEls.forEach(el => countObs.observe(el));
+  </script>
+  <script src="transition.js"></script>
+</body>
+
+</html>

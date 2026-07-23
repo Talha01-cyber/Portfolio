@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammad Talha — Web Developer & Data Analyst</title>
+  <meta name="description"
+    content="Portfolio of Mohammad Talha — Computer Science graduate building fault-tolerant web platforms and data-driven systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transition.css">
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- ── Page Transition Bar ── -->
+  <div id="pageLoader"></div>
+  <div id="pageOverlay"></div>
+
+  <!-- ================= LOADER (first visit only) ================= -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">&lt;LM/&gt;</div>
+      <div class="loader-lines" id="loaderLines"></div>
+      <div class="loader-bar-track">
+        <div class="loader-bar-fill" id="loaderFill"></div>
+      </div>
+      <div class="loader-percent" id="loaderPercent">0%</div>
+    </div>
+    <div class="loader-grid"></div>
+  </div>
+
+  <!-- ================= CURSOR GLOW ================= -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Mohammad Talha<span>.</span></a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="achievements.html" class="nav-link">Achievements</a>
+        <a href="portfolio.html" class="nav-link">My Work</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="home">
+    <div class="hero-inner">
+
+      <div class="hero-text reveal">
+        <p class="eyebrow"><span class="bracket">&lt;</span>Welcome to my World<span class="bracket">/&gt;</span></p>
+        <h1 class="hero-name" id="heroName">Mohammad Talha</h1>
+        <h2 class="hero-role">I'm a <span class="typed" id="typedRole"></span><span class="cursor-blink">|</span></h2>
+        <p class="hero-desc">
+          I engineer resilient web applications and translate complex data into real-world impact.
+          Bridging high-performance code with intelligent systems to build solutions that actually matter.
+        </p>
+
+        <div class="hero-actions">
+          <a href="./images/Talha _Resume.pdf" class="btn btn-primary" download>
+            <span>Download CV</span>
+            <i class="fa-solid fa-arrow-down"></i>
+          </a>
+
+          <div class="social-row">
+            <a href="https://github.com/Talha01-cyber" target="_blank" rel="noopener" class="social-icon"
+              aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/mohammad-talha-484017372" target="_blank" rel="noopener"
+              class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="mailto:talhajubayer78@gmail.com" class="social-icon" aria-label="Email"><i
+                class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-photo reveal" style="--delay:.15s">
+        <div class="orbit-ring"></div>
+        <div class="orbit-ring ring-2"></div>
+        <div class="orbit-dot"></div>
+
+        <div class="photo-frame">
+          <img src="images/profile.png" alt="Mohammad Talha portrait" id="profileImg">
+        </div>
+
+        <div class="floating-chip chip-1"><i class="fa-solid fa-code"></i> Fault-Tolerant Systems</div>
+        <div class="floating-chip chip-2"><i class="fa-solid fa-chart-line"></i> Data-Driven</div>
+      </div>
+
+    </div>
+
+
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="section-inner footer-inner">
+      <p>&copy; <span id="year"></span> Mohammad Talha. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="transition.js"></script>
+</body>
+
+</html>

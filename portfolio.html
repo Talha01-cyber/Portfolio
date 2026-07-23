@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Mohammad Talha</title>
+  <meta name="description" content="Selected projects by Mohammad Talha — AI platforms, web apps and data systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transition.css">
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+  <style>
+    .portfolio-page {
+      padding-top: 140px;
+      padding-bottom: 110px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Page Transition Bar ── -->
+  <div id="pageLoader"></div>
+  <div id="pageOverlay"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Mohammad Talha<span>.</span></a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="achievements.html" class="nav-link">Achievements</a>
+        <a href="portfolio.html" class="nav-link active">My Work</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= PORTFOLIO ================= -->
+  <main class="portfolio-page">
+    <div class="section-inner">
+
+      <p class="eyebrow center"><span class="bracket">&lt;</span>Selected work<span class="bracket">/&gt;</span></p>
+      <h1 class="section-title center">My Latest <span class="glow-text">Projects</span></h1>
+
+      <div class="work-filters" id="workFilters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ai">AI / ML</button>
+        <button class="filter-btn" data-filter="web">Web App</button>
+      </div>
+
+      <div class="work-grid" id="workGrid">
+
+        <article class="work-card reveal" data-cat="ai">
+          <div class="work-media">
+            <img src="images/project-placeholder.svg" alt="Notun Alo platform preview">
+            <div class="work-overlay">
+              <a href="https://github.com/Talha01-cyber" target="_blank" rel="noopener" class="work-link"
+                aria-label="View project"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="work-info">
+            <span class="work-tag">AI / ML · Web App</span>
+            <h3>Notun Alo</h3>
+            <p>Smart AI waste-management platform with a Gradient Boosting ETA model,
+              K-Means service-zone clustering and a Bengali-first Claude-powered chatbot,
+              backed by a 3-tier fault-tolerant failover architecture.</p>
+          </div>
+        </article>
+
+        <article class="work-card reveal" data-cat="web" style="--delay:.08s">
+          <div class="work-media">
+            <img src="images/project-placeholder.svg" alt="Reward-based recycling platform preview">
+            <div class="work-overlay">
+              <a href="https://github.com/Talha01-cyber" target="_blank" rel="noopener" class="work-link"
+                aria-label="View project"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="work-info">
+            <span class="work-tag">Web App</span>
+            <h3>Reward-Based Recycling Platform</h3>
+            <p>Waste-pickup scheduling with points-based rewards, an e-commerce
+              redemption store, and full admin monitoring for pickups, orders and logs.</p>
+          </div>
+        </article>
+
+        <article class="work-card reveal" data-cat="web" style="--delay:.16s">
+          <div class="work-media">
+            <img src="images/project-placeholder.svg" alt="Exam management system preview">
+            <div class="work-overlay">
+              <a href="https://github.com/Talha01-cyber" target="_blank" rel="noopener" class="work-link"
+                aria-label="View project"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="work-info">
+            <span class="work-tag">Web App</span>
+            <h3>Exam Management System</h3>
+            <p>Dual-portal exam platform — admins manage questions and results while
+              students log in, sit exams, and view results instantly.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <div style="display:flex; justify-content:center; margin-top:56px;" class="reveal">
+        <a href="contact.html" class="btn btn-outline">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Got a project? Let's talk</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="section-inner footer-inner">
+      <a href="index.html" class="logo">Talha<span>.</span></a>
+      <p>&copy; <span id="year"></span> Mohammad Talha. All rights reserved.</p>
+      <a href="#" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    /* reveal */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+    /* filter */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.work-card').forEach(card => {
+          card.classList.toggle('hide', filter !== 'all' && card.dataset.cat !== filter);
+        });
+      });
+    });
+  </script>
+  <script src="transition.js"></script>
+</body>
+
+</html>

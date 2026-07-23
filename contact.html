@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Mohammad Talha</title>
+  <meta name="description"
+    content="Get in touch with Mohammad Talha — web developer and data analyst based in Dhaka, Bangladesh.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transition.css">
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+  <style>
+    .contact-page {
+      padding-top: 140px;
+      padding-bottom: 110px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Page Transition Bar ── -->
+  <div id="pageLoader"></div>
+  <div id="pageOverlay"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Mohammad Talha<span>.</span></a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="achievements.html" class="nav-link">Achievements</a>
+        <a href="portfolio.html" class="nav-link">My Work</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= CONTACT ================= -->
+  <main class="contact-page">
+    <div class="section-inner contact-grid">
+
+      <div class="contact-info reveal">
+        <p class="eyebrow"><span class="bracket">&lt;</span>Get in touch<span class="bracket">/&gt;</span></p>
+        <h1 class="section-title">Let's build something <span class="glow-text">great</span> together.</h1>
+        <p class="section-desc">Have a project in mind, or just want to say hi? My inbox is always open.</p>
+
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-envelope"></i> talhajubayer78@gmail.com</li>
+          <li><i class="fa-solid fa-phone"></i> +880 1835-064233</li>
+          <li><i class="fa-solid fa-location-dot"></i> Dhaka, Bangladesh</li>
+        </ul>
+
+        <div class="social-row">
+          <a href="https://github.com/Talha01-cyber" target="_blank" rel="noopener" class="social-icon"
+            aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/mohammad-talha-484017372" target="_blank" rel="noopener"
+            class="social-icon" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="mailto:talhajubayer78@gmail.com" class="social-icon" aria-label="Email"><i
+              class="fa-solid fa-envelope"></i></a>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm" style="--delay:.1s">
+        <div class="form-row">
+          <div class="form-field">
+            <input type="text" id="fname" required placeholder=" ">
+            <label for="fname">Your Name</label>
+          </div>
+          <div class="form-field">
+            <input type="email" id="femail" required placeholder=" ">
+            <label for="femail">Your Email</label>
+          </div>
+        </div>
+        <div class="form-field">
+          <input type="text" id="fsubject" required placeholder=" ">
+          <label for="fsubject">Subject</label>
+        </div>
+        <div class="form-field">
+          <textarea id="fmessage" rows="5" required placeholder=" "></textarea>
+          <label for="fmessage">Message</label>
+        </div>
+        <button type="submit" class="btn btn-primary full" id="formSubmit">
+          <span>Send Message</span>
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="section-inner footer-inner">
+      <p>&copy; <span id="year"></span> Mohammad Talha. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+    /* contact form */
+    const contactForm = document.getElementById('contactForm');
+    const formSubmit = document.getElementById('formSubmit');
+    contactForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const label = formSubmit.querySelector('span');
+      const icon = formSubmit.querySelector('i');
+      label.textContent = 'Sending...';
+      formSubmit.style.opacity = '0.75';
+      setTimeout(() => {
+        label.textContent = 'Message Sent ✓';
+        icon.className = 'fa-solid fa-check';
+        formSubmit.style.opacity = '1';
+        setTimeout(() => {
+          contactForm.reset();
+          label.textContent = 'Send Message';
+          icon.className = 'fa-solid fa-paper-plane';
+        }, 2200);
+      }, 900);
+    });
+  </script>
+  <script src="transition.js"></script>
+</body>
+
+</html>
