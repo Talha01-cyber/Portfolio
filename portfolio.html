@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Mohammad Talha</title>
+  <meta name="description" content="Selected projects by Mohammad Talha — AI platforms, web apps and data systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transition.css">
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+  <style>
+    .portfolio-page {
+      padding-top: 140px;
+      padding-bottom: 110px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Page Transition Bar ── -->
+  <div id="pageLoader"></div>
+  <div id="pageOverlay"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Mohammad Talha<span>.</span></a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="achievements.html" class="nav-link">Achievements</a>
+        <a href="portfolio.html" class="nav-link active">My Work</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= PORTFOLIO ================= -->
+  <main class="portfolio-page">
+    <div class="section-inner">
+
+      <p class="eyebrow center"><span class="bracket">&lt;</span>Selected work<span class="bracket">/&gt;</span></p>
+      <h1 class="section-title center">My Latest <span class="glow-text">Projects</span></h1>
+
+      <div class="work-filters" id="workFilters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ai">AI / ML</button>
+        <button class="filter-btn" data-filter="web">Web App</button>
+        <button class="filter-btn" data-filter="desktop">Desktop App</button>
+      </div>
+
+      <div class="work-grid" id="workGrid">
+
+        <!-- 1. Notun Alo -->
+        <article class="work-card reveal" data-cat="ai web" id="card-notun-alo">
+          <div class="work-media">
+            <div class="carousel" data-active-index="0">
+              <div class="carousel-track">
+                <img src="images/PIC/NA 1.png" alt="Notun Alo image 1" class="carousel-img active">
+                <img src="images/PIC/NA 2.png" alt="Notun Alo image 2" class="carousel-img">
+                <img src="images/PIC/NA 3.png" alt="Notun Alo image 3" class="carousel-img">
+                <img src="images/PIC/NA 4.png" alt="Notun Alo image 4" class="carousel-img">
+              </div>
+              <button class="carousel-arrow prev-arrow" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="carousel-arrow next-arrow" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-slide="0"></span>
+                <span class="carousel-dot" data-slide="1"></span>
+                <span class="carousel-dot" data-slide="2"></span>
+                <span class="carousel-dot" data-slide="3"></span>
+              </div>
+            </div>
+            <div class="work-overlay">
+              <a href="https://notun-alo.onrender.com" target="_blank" rel="noopener" class="work-link"
+                aria-label="View project"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="work-info">
+            <span class="work-tag">AI / ML · Web App</span>
+            <h3>Notun Alo</h3>
+            <p>Smart AI waste-management platform featuring a Gradient Boosting prediction model, K-Means clustering, and Claude API chatbot integration.</p>
+            <button class="btn-details" onclick="openProjectModal('notun-alo')">
+              <span>View Details</span>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- 2. AquaRec -->
+        <article class="work-card reveal" data-cat="ai" style="--delay:.08s" id="card-aquarec">
+          <div class="work-media">
+            <div class="carousel" data-active-index="0">
+              <div class="carousel-track">
+                <img src="images/PIC/FR 1.png" alt="AquaRec image 1" class="carousel-img active">
+                <img src="images/PIC/FR 2.png" alt="AquaRec image 2" class="carousel-img">
+              </div>
+              <button class="carousel-arrow prev-arrow" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="carousel-arrow next-arrow" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-slide="0"></span>
+                <span class="carousel-dot" data-slide="1"></span>
+              </div>
+            </div>
+            <div class="work-overlay">
+              <a href="https://talha01-cyber.github.io/Fish-Recommandation-System/" target="_blank" rel="noopener" class="work-link"
+                aria-label="View project"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="work-info">
+            <span class="work-tag">AI / ML · Python</span>
+            <h3>AquaRec: Fish Recommendation System</h3>
+            <p>Interactive web application utilizing a Random Forest classifier to recommend optimal fish species based on temperature, pH, and water turbidity.</p>
+            <button class="btn-details" onclick="openProjectModal('aquarec')">
+              <span>View Details</span>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+          </div>
+        </article>
+
+        <!-- 3. Exam Management System -->
+        <article class="work-card reveal" data-cat="desktop" style="--delay:.16s" id="card-exam-management">
+          <div class="work-media">
+            <div class="carousel" data-active-index="0">
+              <div class="carousel-track">
+                <img src="images/PIC/EM 2.png" alt="Exam Management image 1" class="carousel-img active">
+                <img src="images/PIC/EM 3.png" alt="Exam Management image 2" class="carousel-img">
+                <img src="images/PIC/EM 4.png" alt="Exam Management image 3" class="carousel-img">
+                <img src="images/PIC/EM 5.png" alt="Exam Management image 4" class="carousel-img">
+              </div>
+              <button class="carousel-arrow prev-arrow" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="carousel-arrow next-arrow" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+              <div class="carousel-dots">
+                <span class="carousel-dot active" data-slide="0"></span>
+                <span class="carousel-dot" data-slide="1"></span>
+                <span class="carousel-dot" data-slide="2"></span>
+                <span class="carousel-dot" data-slide="3"></span>
+              </div>
+            </div>
+            <div class="work-overlay">
+              <a href="https://github.com/Talha01-cyber/Exam-Management-System" target="_blank" rel="noopener" class="work-link"
+                aria-label="View project"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <div class="work-info">
+            <span class="work-tag">Java FX · Desktop App</span>
+            <h3>Exam Management System</h3>
+            <p>Comprehensive desktop application built on JavaFX featuring dual student-admin portals, databases, and automated grading.</p>
+            <button class="btn-details" onclick="openProjectModal('exam-management')">
+              <span>View Details</span>
+              <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+          </div>
+        </article>
+
+      </div>
+
+      <div style="display:flex; justify-content:center; margin-top:56px;" class="reveal">
+        <a href="contact.html" class="btn btn-outline">
+          <i class="fa-solid fa-paper-plane"></i>
+          <span>Got a project? Let's talk</span>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= PROJECT DETAILS MODAL ================= -->
+  <div id="projectModal" class="project-modal">
+    <div class="modal-backdrop" onclick="closeProjectModal()"></div>
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeProjectModal()" aria-label="Close modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      
+      <div class="modal-body-grid">
+        <!-- Media side -->
+        <div class="modal-media-side">
+          <div class="modal-carousel">
+            <div class="modal-carousel-track" id="modalCarouselTrack">
+              <!-- Images loaded dynamically -->
+            </div>
+            <button class="modal-carousel-arrow modal-prev" id="modalPrevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="modal-carousel-arrow modal-next" id="modalNextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            <div class="modal-carousel-dots" id="modalCarouselDots">
+              <!-- Dots loaded dynamically -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Info side -->
+        <div class="modal-info-side">
+          <span class="work-tag" id="modalProjectTags"></span>
+          <h2 id="modalProjectTitle"></h2>
+          <p class="modal-summary" id="modalProjectSummary"></p>
+          
+          <div class="modal-details-section">
+            <h4>Key Features & Achievements</h4>
+            <ul class="modal-bullets" id="modalProjectBullets">
+              <!-- Bullet points loaded dynamically -->
+            </ul>
+          </div>
+          
+          <div class="modal-actions" id="modalProjectActions">
+            <!-- Buttons dynamically populated -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="section-inner footer-inner">
+      <a href="index.html" class="logo">Talha<span>.</span></a>
+      <p>&copy; <span id="year"></span> Mohammad Talha. All rights reserved.</p>
+      <a href="#" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    /* reveal */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+    /* filter with space-separated tags support */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.work-card').forEach(card => {
+          const categories = card.dataset.cat.split(' ');
+          card.classList.toggle('hide', filter !== 'all' && !categories.includes(filter));
+        });
+      });
+    });
+
+    /* Project details data */
+    const projectData = {
+      'notun-alo': {
+        title: 'Notun Alo',
+        tags: 'AI / ML · Web App',
+        liveLink: 'https://notun-alo.onrender.com',
+        githubLink: 'https://github.com/Talha01-cyber',
+        images: [
+          'images/PIC/NA 1.png',
+          'images/PIC/NA 2.png',
+          'images/PIC/NA 3.png',
+          'images/PIC/NA 4.png'
+        ],
+        summary: 'Built a dual-engine hybrid web platform connecting households with recycling agencies through an automated AI-powered agency assignment system using a multi-factor weighted scoring algorithm.',
+        bulletPoints: [
+          'Engineered a Gradient Boosting ML model (Scikit-learn) for pickup ETA prediction, combined with K-Means unsupervised clustering to divide Dhaka into optimized operational service zones.',
+          'Designed a 3-tier fault-tolerant failover architecture ensuring zero user-facing downtime across full ML operation, degraded mode, and native PHP fallback states.',
+          'Integrated a Bengali-first conversational AI chatbot (Claude API) with real-time user history access, enabling natural language pickup scheduling with automatic database insertion on intent detection.',
+          'Implemented a gamified reward system with points-based redemption, badges, and leaderboard to drive sustained recycling engagement across urban households.'
+        ]
+      },
+      'aquarec': {
+        title: 'AquaRec: Fish Recommendation System',
+        tags: 'AI / ML · Python · Web',
+        liveLink: 'https://talha01-cyber.github.io/Fish-Recommandation-System/',
+        githubLink: 'https://github.com/Talha01-cyber/Fish-Recommandation-System',
+        images: [
+          'images/PIC/FR 1.png',
+          'images/PIC/FR 2.png'
+        ],
+        summary: 'An AI-powered application designed to recommend the best fish species for harvest based on water parameters, created as a first Artificial Intelligence project.',
+        bulletPoints: [
+          'Trained and deployed a machine learning recommendation model utilizing the Random Forest algorithm to predict optimal fish harvest species.',
+          'Accepts real-time water quality parameter inputs including temperature, pH, and water turbidity from users.',
+          'Designed a clean, dynamic frontend built using HTML, CSS, and Python to seamlessly showcase model predictions and decision logs.'
+        ]
+      },
+      'exam-management': {
+        title: 'Exam Management System',
+        tags: 'Java FX · Desktop App',
+        liveLink: '',
+        githubLink: 'https://github.com/Talha01-cyber/Exam-Management-System',
+        images: [
+          'images/PIC/EM 2.png',
+          'images/PIC/EM 3.png',
+          'images/PIC/EM 4.png',
+          'images/PIC/EM 5.png'
+        ],
+        summary: 'My very first functional project, an end-to-end desktop Exam Management System designed to handle school or college testing workflows.',
+        bulletPoints: [
+          'Built entirely on JavaFX, utilizing desktop database bindings for secure storing and grading of quiz scripts.',
+          'Developed key functionalities including secure admin dashboard to control exams, questions, and students logging in.',
+          'Provides students with direct logins, allowing them to sit for exams, complete submissions under time pressure, and view their exam reports instantly.'
+        ]
+      }
+    };
+
+    /* Card Carousels Handler */
+    document.querySelectorAll('.work-card').forEach(card => {
+      const imgs = card.querySelectorAll('.carousel-img');
+      if (imgs.length <= 1) return;
+
+      const dots = card.querySelectorAll('.carousel-dot');
+      const prevBtn = card.querySelector('.prev-arrow');
+      const nextBtn = card.querySelector('.next-arrow');
+      
+      let currentIndex = 0;
+      let intervalId = null;
+
+      const showImage = (index) => {
+        imgs[currentIndex].classList.remove('active');
+        dots[currentIndex].classList.remove('active');
+        
+        currentIndex = (index + imgs.length) % imgs.length;
+        
+        imgs[currentIndex].classList.add('active');
+        dots[currentIndex].classList.add('active');
+      };
+
+      const startAutoPlay = () => {
+        if (intervalId) clearInterval(intervalId);
+        intervalId = setInterval(() => {
+          showImage(currentIndex + 1);
+        }, 3000);
+      };
+
+      const stopAutoPlay = () => {
+        if (intervalId) {
+          clearInterval(intervalId);
+          intervalId = null;
+        }
+      };
+
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showImage(currentIndex - 1);
+        startAutoPlay();
+      });
+
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showImage(currentIndex + 1);
+        startAutoPlay();
+      });
+
+      dots.forEach(dot => {
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetIndex = parseInt(dot.getAttribute('data-slide'));
+          showImage(targetIndex);
+          startAutoPlay();
+        });
+      });
+
+      card.addEventListener('mouseenter', startAutoPlay);
+      card.addEventListener('mouseleave', () => {
+        stopAutoPlay();
+        showImage(0);
+      });
+    });
+
+    /* Modal handler variables */
+    let modalCurrentIndex = 0;
+    let modalImages = [];
+
+    function openProjectModal(projectId) {
+      const data = projectData[projectId];
+      if (!data) return;
+
+      document.getElementById('modalProjectTitle').textContent = data.title;
+      document.getElementById('modalProjectTags').textContent = data.tags;
+      document.getElementById('modalProjectSummary').textContent = data.summary;
+
+      // Populate Bullets
+      const bulletsUl = document.getElementById('modalProjectBullets');
+      bulletsUl.innerHTML = '';
+      data.bulletPoints.forEach(pt => {
+        const li = document.createElement('li');
+        li.textContent = pt;
+        bulletsUl.appendChild(li);
+      });
+
+      // Populate Actions
+      const actionsDiv = document.getElementById('modalProjectActions');
+      actionsDiv.innerHTML = '';
+      if (data.liveLink) {
+        actionsDiv.innerHTML += `
+          <a href="${data.liveLink}" target="_blank" rel="noopener" class="btn btn-primary">
+            <span>Visit Live Website</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        `;
+      }
+      if (data.githubLink) {
+        actionsDiv.innerHTML += `
+          <a href="${data.githubLink}" target="_blank" rel="noopener" class="btn btn-outline" style="margin-top: 0;">
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub Repository</span>
+          </a>
+        `;
+      }
+
+      // Populate Carousel
+      modalImages = data.images;
+      modalCurrentIndex = 0;
+      
+      const track = document.getElementById('modalCarouselTrack');
+      const dotsContainer = document.getElementById('modalCarouselDots');
+      track.innerHTML = '';
+      dotsContainer.innerHTML = '';
+
+      modalImages.forEach((imgSrc, idx) => {
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.alt = `${data.title} screenshot ${idx + 1}`;
+        img.className = `modal-carousel-img ${idx === 0 ? 'active' : ''}`;
+        track.appendChild(img);
+
+        const dot = document.createElement('span');
+        dot.className = `modal-carousel-dot ${idx === 0 ? 'active' : ''}`;
+        dot.setAttribute('data-index', idx);
+        dot.addEventListener('click', () => showModalImage(idx));
+        dotsContainer.appendChild(dot);
+      });
+
+      const prevBtn = document.getElementById('modalPrevBtn');
+      const nextBtn = document.getElementById('modalNextBtn');
+      
+      if (modalImages.length <= 1) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+        dotsContainer.style.display = 'none';
+      } else {
+        prevBtn.style.display = 'flex';
+        nextBtn.style.display = 'flex';
+        dotsContainer.style.display = 'flex';
+      }
+
+      const modal = document.getElementById('projectModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function showModalImage(index) {
+      const imgs = document.querySelectorAll('.modal-carousel-img');
+      const dots = document.querySelectorAll('.modal-carousel-dot');
+      if (imgs.length === 0) return;
+
+      imgs[modalCurrentIndex].classList.remove('active');
+      dots[modalCurrentIndex].classList.remove('active');
+
+      modalCurrentIndex = (index + imgs.length) % imgs.length;
+
+      imgs[modalCurrentIndex].classList.add('active');
+      dots[modalCurrentIndex].classList.add('active');
+    }
+
+    document.getElementById('modalPrevBtn').addEventListener('click', () => {
+      showModalImage(modalCurrentIndex - 1);
+    });
+
+    document.getElementById('modalNextBtn').addEventListener('click', () => {
+      showModalImage(modalCurrentIndex + 1);
+    });
+
+    // Close modal on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeProjectModal();
+    });
+  </script>
+</body>
+</html>

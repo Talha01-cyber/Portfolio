@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Mohammad Talha</title>
+  <meta name="description"
+    content="Services offered by Mohammad Talha — web development, data analysis, database management, and event coordination.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transition.css">
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+  <style>
+    .services-page {
+      padding-top: 140px;
+      padding-bottom: 110px;
+    }
+
+    /* ── Process steps ── */
+    .process-section {
+      max-width: 860px;
+      margin: 80px auto 0;
+    }
+
+    .process-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .process-title span {
+      color: var(--neon);
+    }
+
+    .process-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .process-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      transition: border-color .3s ease, transform .3s var(--ease);
+    }
+
+    .process-step:hover {
+      border-color: var(--border-strong);
+      transform: translateX(6px);
+    }
+
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--neon);
+      opacity: .3;
+      min-width: 36px;
+      transition: opacity .3s ease;
+    }
+
+    .process-step:hover .step-num {
+      opacity: 1;
+    }
+
+    .step-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .step-body p {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── Page Transition Bar ── -->
+  <div id="pageLoader"></div>
+  <div id="pageOverlay"></div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Mohammad Talha<span>.</span></a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="achievements.html" class="nav-link">Achievements</a>
+        <a href="portfolio.html" class="nav-link">My Work</a>
+        <a href="services.html" class="nav-link active">Services</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= SERVICES ================= -->
+  <main class="services-page">
+    <div class="section-inner">
+
+      <p class="eyebrow center"><span class="bracket">&lt;</span>What I do<span class="bracket">/&gt;</span></p>
+      <h1 class="section-title center">Services I <span class="glow-text">Offer</span></h1>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+          <h3>Web Development</h3>
+          <p>Full-stack platforms built with PHP, Python/Flask, JavaScript and MySQL — designed to stay online even when
+            parts fail.</p>
+        </div>
+        <div class="service-card reveal" style="--delay:.08s">
+          <div class="service-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Data Analysis &amp; Visualization</h3>
+          <p>Turning raw data into clear, actionable insight with Excel, Power BI and Python-based analysis.</p>
+        </div>
+        <div class="service-card reveal" style="--delay:.16s">
+          <div class="service-icon"><i class="fa-solid fa-database"></i></div>
+          <h3>Database Management</h3>
+          <p>Schema design, query optimization and reliable data pipelines built on MySQL.</p>
+        </div>
+        <div class="service-card reveal" style="--delay:.24s">
+          <div class="service-icon"><i class="fa-solid fa-users-gear"></i></div>
+          <h3>Event &amp; Team Coordination</h3>
+          <p>Hands-on experience leading large-scale event administration, crowd coordination and cross-team
+            communication.</p>
+        </div>
+        <div class="service-card reveal" style="--delay:.32s">
+          <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+          <h3>Machine Learning Integration</h3>
+          <p>Building and embedding ML models (Gradient Boosting, K-Means) into production web systems for smarter
+            automation.</p>
+        </div>
+        <div class="service-card reveal" style="--delay:.4s">
+          <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>System Architecture</h3>
+          <p>Designing fault-tolerant, multi-tier architectures that ensure continuity and reliability even under
+            component failure.</p>
+        </div>
+      </div>
+
+      <!-- Process section -->
+      <div class="process-section">
+        <h2 class="process-title">My <span>Process</span></h2>
+        <div class="process-steps">
+          <div class="process-step reveal">
+            <span class="step-num">01</span>
+            <div class="step-body">
+              <h3>Understand the Problem</h3>
+              <p>I start by deeply understanding the requirements, constraints, and the real problem behind the request
+                — not just what's asked, but why it matters.</p>
+            </div>
+          </div>
+          <div class="process-step reveal" style="--delay:.08s">
+            <span class="step-num">02</span>
+            <div class="step-body">
+              <h3>Plan &amp; Architect</h3>
+              <p>Map out the system design, data flows, and technology stack before writing a single line of code.</p>
+            </div>
+          </div>
+          <div class="process-step reveal" style="--delay:.16s">
+            <span class="step-num">03</span>
+            <div class="step-body">
+              <h3>Build &amp; Iterate</h3>
+              <p>Develop in focused cycles — build, test, refine. Clean code, clear commits, and regular checkpoints.
+              </p>
+            </div>
+          </div>
+          <div class="process-step reveal" style="--delay:.24s">
+            <span class="step-num">04</span>
+            <div class="step-body">
+              <h3>Deploy &amp; Monitor</h3>
+              <p>Ship with confidence. Set up monitoring, handle edge cases, and stay available for post-launch support.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:center; margin-top:64px;" class="reveal">
+        <a href="contact.html" class="btn btn-primary">
+          <span>Start a Project</span>
+          <i class="fa-solid fa-rocket"></i>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="section-inner footer-inner">
+      <a href="index.html" class="logo">Talha<span>.</span></a>
+      <p>&copy; <span id="year"></span> Mohammad Talha. All rights reserved.</p>
+      <a href="#" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinks.classList.toggle('open');
+    });
+
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObs.observe(el));
+  </script>
+  <script src="transition.js"></script>
+</body>
+
+</html>

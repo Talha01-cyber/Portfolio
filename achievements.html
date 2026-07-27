@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements — Mohammad Talha</title>
+  <meta name="description" content="Achievements, volunteer experience, and event gallery by Mohammad Talha.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="transition.css">
+  <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.add('light-mode');
+    }
+  </script>
+  <style>
+    /* ── Page ── */
+    .achievements-page {
+      padding-top: 140px;
+      padding-bottom: 110px;
+    }
+
+    /* ── Page header ── */
+    .achieve-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 80px;
+    }
+
+    .achieve-header .eyebrow {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+
+    .achieve-header .section-title {
+      margin: 0 auto 0;
+    }
+
+    .achieve-header .section-desc {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .neon-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--neon-dim), var(--neon));
+      border-radius: 4px;
+      margin: 0 auto 36px;
+      box-shadow: 0 0 12px rgba(77, 255, 136, .5);
+    }
+
+    /* ── Block title ── */
+    .achieve-block {
+      margin-bottom: 100px;
+    }
+
+    .achieve-block-title {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .achieve-block-title i {
+      color: var(--neon);
+      font-size: 1.2rem;
+    }
+
+    .achieve-block-title span {
+      color: var(--neon);
+    }
+
+    /* ════════════════════════════════════════
+   EVENT GALLERY  (image-left + info-right)
+════════════════════════════════════════ */
+    .event-list {
+      display: flex;
+      flex-direction: row;
+      gap: 0;
+      width: 100%;
+      transition: transform .55s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .event-entry {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 48px;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      transition: border-color .4s ease, box-shadow .4s ease;
+      position: relative;
+      overflow: hidden;
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+
+    /* ── Events Outer Slider ── */
+    .events-slider-container {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    .events-slider-wrapper {
+      overflow: hidden;
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 0;
+      margin-top: -24px;
+      margin-bottom: -24px;
+    }
+
+    .events-slider-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(7, 10, 9, 0.75);
+      border: 1px solid var(--border-strong);
+      color: var(--neon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 15;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .events-slider-arrow:hover {
+      background: var(--neon);
+      color: #04150b;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 0 15px var(--neon-dim);
+      border-color: var(--neon);
+    }
+
+    .events-slider-arrow.prev {
+      left: 6px;
+    }
+
+    .events-slider-arrow.next {
+      right: 6px;
+    }
+
+    .events-slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .events-slider-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .events-slider-dot.active {
+      background: var(--neon);
+      transform: scale(1.25);
+      box-shadow: 0 0 8px var(--neon-dim);
+    }
+
+    .events-slider-counter {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--neon-dim);
+      margin-top: 14px;
+      letter-spacing: 0.8px;
+    }
+
+    .event-entry::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-dim), var(--neon), var(--neon-2));
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+
+    .event-entry:hover {
+      border-color: var(--border-strong);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+    }
+
+    .event-entry:hover::before {
+      opacity: 1;
+    }
+
+    /* ── Image carousel side ── */
+    .event-gallery {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--bg-soft);
+      flex-shrink: 0;
+    }
+
+    .gallery-track {
+      display: flex;
+      height: 100%;
+      transition: transform .45s cubic-bezier(.22, 1, .36, 1);
+    }
+
+    .gallery-slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+      /* matches the gallery container so bars are invisible in dark mode */
+      background: var(--bg-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* light-mode letterbox colour */
+    :root.light-mode .gallery-slide {
+      background: #ffffff;
+    }
+
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    /* placeholder when no image provided */
+    .gallery-slide .no-img {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface-2);
+      color: var(--muted-2);
+      font-size: 3rem;
+    }
+
+    /* arrow buttons */
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: transparent;
+      border: 1px solid rgba(77, 255, 136, 0.4);
+      color: var(--neon);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .85rem;
+      cursor: pointer;
+      z-index: 5;
+      transition: background .25s ease, border-color .25s ease, transform .25s ease;
+      backdrop-filter: none;
+    }
+
+    .gallery-arrow:hover {
+      background: rgba(77, 255, 136, 0.15);
+      border-color: var(--neon);
+      color: var(--neon);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    /* keep transparent in light mode too */
+    :root.light-mode .gallery-arrow {
+      background: transparent;
+      border-color: rgba(77, 255, 136, 0.5);
+    }
+
+    :root.light-mode .gallery-arrow:hover {
+      background: rgba(77, 255, 136, 0.15);
+    }
+
+    .gallery-arrow.prev {
+      left: 10px;
+    }
+
+    .gallery-arrow.next {
+      right: 10px;
+    }
+
+    /* dot indicators */
+    .gallery-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .gallery-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .3);
+      cursor: pointer;
+      transition: background .25s ease, transform .25s ease;
+    }
+
+    .gallery-dot.active {
+      background: var(--neon);
+      transform: scale(1.3);
+    }
+
+    /* image counter badge */
+    .gallery-counter {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(7, 10, 9, .75);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-family: var(--font-mono);
+      font-size: .65rem;
+      color: var(--neon);
+      backdrop-filter: blur(6px);
+    }
+
+    /* ── Info side ── */
+    .event-info {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .event-tag {
+      font-family: var(--font-mono);
+      font-size: .68rem;
+      color: var(--neon);
+      text-transform: uppercase;
+      letter-spacing: .6px;
+    }
+
+    .event-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--text);
+    }
+
+    .event-desc {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .event-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 4px;
+    }
+
+    .event-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-mono);
+      font-size: .72rem;
+      color: var(--neon-dim);
+    }
+
+    .event-meta-item i {
+      color: var(--neon);
+    }
+
+    .event-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .event-pill {
+      background: rgba(77, 255, 136, .08);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 14px;
+      font-size: .75rem;
+      color: var(--neon);
+      font-family: var(--font-mono);
+    }
+
+    /* ── Awards grid ── */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      max-width: 940px;
+      margin: 0 auto;
+    }
+
+    .award-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 22px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform .35s var(--ease), border-color .35s ease;
+    }
+
+    .award-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--neon-dim), var(--neon), var(--neon-2));
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+
+    .award-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-strong);
+    }
+
+    .award-card:hover::before {
+      opacity: 1;
+    }
+
+    .award-icon {
+      font-size: 2rem;
+      color: var(--neon);
+      margin-bottom: 14px;
+      display: block;
+      text-shadow: 0 0 16px rgba(77, 255, 136, .5);
+    }
+
+    .award-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .award-card p {
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 860px) {
+      .event-entry {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .event-gallery {
+        aspect-ratio: 3/4;
+      }
+
+      .events-slider-container {
+        padding: 0 44px;
+      }
+
+      .events-slider-arrow {
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+      }
+
+      .events-slider-arrow.prev {
+        left: 0;
+      }
+
+      .events-slider-arrow.next {
+        right: 0;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .event-entry {
+        padding: 20px;
+      }
+
+      .events-slider-container {
+        padding: 0;
+      }
+
+      .events-slider-arrow {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="pageLoader"></div>
+  <div id="pageOverlay"></div>
+
+  <!-- NAVBAR -->
+  <header class="navbar scrolled" id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo">Mohammad Talha<span>.</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="achievements.html" class="nav-link active">Achievements</a>
+        <a href="portfolio.html" class="nav-link">My Work</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="achievements-page">
+    <div class="section-inner">
+
+      <!-- Header -->
+      <div class="achieve-header reveal">
+        <p class="eyebrow"><span class="bracket">&lt;</span>Recognition &amp; Service<span class="bracket">/&gt;</span>
+        </p>
+        <h1 class="section-title">Achievements &amp; <span class="glow-text">Contributions</span></h1>
+        <div class="neon-divider"></div>
+        <p class="section-desc">
+          From volunteer leadership to competition wins — a record of the work I've done beyond the keyboard.
+        </p>
+      </div>
+
+      <!-- ══════════ EVENT GALLERY ══════════ -->
+      <div class="achieve-block">
+        <h2 class="achieve-block-title">
+          <i class="fa-solid fa-images"></i> Events &amp; <span>Highlights</span>
+        </h2>
+
+        <div class="events-slider-container reveal">
+          <button class="events-slider-arrow prev" aria-label="Previous Event">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="events-slider-arrow next" aria-label="Next Event">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+          <div class="events-slider-wrapper">
+            <div class="event-list">
+
+              <!-- EVENT 1 — Data Analysis Certificate -->
+              <div class="event-entry" data-gallery="0">
+                <div class="event-gallery">
+                  <div class="gallery-track">
+                    <div class="gallery-slide">
+                      <img src="images/Data.jpg"
+                        alt="Data Analysis Certificate — Data Solution 360 Bootcamp completion">
+                    </div>
+                  </div>
+                  <button class="gallery-arrow prev" aria-label="Previous"><i
+                      class="fa-solid fa-chevron-left"></i></button>
+                  <button class="gallery-arrow next" aria-label="Next"><i
+                      class="fa-solid fa-chevron-right"></i></button>
+                  <div class="gallery-dots"></div>
+                  <div class="gallery-counter">1 / 1</div>
+                </div>
+                <div class="event-info">
+                  <div class="event-tag">Certification</div>
+                  <h2 class="event-title">Data Analysis Certificate — Data Solution 360</h2>
+                  <p class="event-desc">
+                    Awarded in recognition of successfully completing the 5 month Data Analyst Job Ready Bootcamp
+                    (Batch 2411) at Data Solution 360. Demonstrated proficiency in advanced data analysis, data
+                    cleaning, visualization, and process optimization, equipped with expertise in Excel, SQL,
+                    Power BI, and Python, grounded in a robust understanding of Statistics.
+                  </p>
+                  <div class="event-meta">
+                    <span class="event-meta-item"><i class="fa-regular fa-calendar"></i> 1 February 2025</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-building-columns"></i> Data Solution 360</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-certificate"></i> Batch 2411</span>
+                  </div>
+                  <div class="event-pills">
+                    <span class="event-pill">Excel</span>
+                    <span class="event-pill">SQL</span>
+                    <span class="event-pill">Power BI</span>
+                    <span class="event-pill">Python</span>
+                    <span class="event-pill">Statistics</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EVENT 2 — Champion EEE Fest 2026 ULAB -->
+              <div class="event-entry" data-gallery="1">
+                <div class="event-gallery">
+                  <div class="gallery-track">
+                    <div class="gallery-slide">
+                      <img src="images/Champ1.jpg" alt="EEE Fest 2026 — Championship award ceremony with VC">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/Chmap2.jpg" alt="EEE Fest 2026 — Smart Helmet project showcase">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/champ3.jpg" alt="EEE Fest 2026 — Team receiving championship trophy">
+                    </div>
+                  </div>
+                  <button class="gallery-arrow prev" aria-label="Previous"><i
+                      class="fa-solid fa-chevron-left"></i></button>
+                  <button class="gallery-arrow next" aria-label="Next"><i
+                      class="fa-solid fa-chevron-right"></i></button>
+                  <div class="gallery-dots"></div>
+                  <div class="gallery-counter">1 / 3</div>
+                </div>
+                <div class="event-info">
+                  <div class="event-tag">Championship · Competition</div>
+                  <h2 class="event-title">🏆 Champion — EEE Fest 2026, ULAB</h2>
+                  <p class="event-desc">
+                    Organized by the ULAB Electronics and Robotics Club, EEE Fest 2026 brought together the brightest
+                    minds in electronics and engineering. Our team clinched the Championship title by showcasing the
+                    <strong>Smart Helmet</strong> an innovative safety solution integrating embedded systems and
+                    IoT. The prestigious award was presented by the University Vice Chancellor in recognition of
+                    outstanding innovation and technical excellence.
+                  </p>
+                  <div class="event-meta">
+                    <span class="event-meta-item"><i class="fa-regular fa-calendar"></i> 2026</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> ULAB, Dhaka</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-trophy"></i> Championship Winner</span>
+                  </div>
+                  <div class="event-pills">
+                    <span class="event-pill">IoT</span>
+                    <span class="event-pill">Embedded Systems</span>
+                    <span class="event-pill">Innovation</span>
+                    <span class="event-pill">Robotics</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EVENT 3 — ULAB Communication Office -->
+              <div class="event-entry" data-gallery="2">
+                <div class="event-gallery">
+                  <div class="gallery-track">
+                    <div class="gallery-slide">
+                      <img src="images/Comms1.jpg" alt="ULAB Communication Office — Event hosting and engagement">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/comms2.jpg" alt="ULAB Communication Office — Campus event coordination">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/Comms3.jpg" alt="ULAB Communication Office — Large-scale audience interaction">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/Comms4.jpg" alt="ULAB Communication Office — Volunteer team at official event">
+                    </div>
+                  </div>
+                  <button class="gallery-arrow prev" aria-label="Previous"><i
+                      class="fa-solid fa-chevron-left"></i></button>
+                  <button class="gallery-arrow next" aria-label="Next"><i
+                      class="fa-solid fa-chevron-right"></i></button>
+                  <div class="gallery-dots"></div>
+                  <div class="gallery-counter">1 / 4</div>
+                </div>
+                <div class="event-info">
+                  <div class="event-tag">Volunteer · Communications</div>
+                  <h2 class="event-title">Volunteer — ULAB Communication Office</h2>
+                  <p class="event-desc">
+                    Served as a dedicated volunteer at the ULAB Communication Office for over a year, contributing
+                    to the university's official communication and public engagement efforts. Throughout this
+                    journey, actively participated in and helped host multiple large-scale campus events,
+                    engaging, welcoming, and interacting with audiences of 2,000 to 3,000 people across various
+                    programmes held at ULAB.
+                  </p>
+                  <div class="event-meta">
+                    <span class="event-meta-item"><i class="fa-regular fa-calendar"></i> 2024</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> ULAB, Dhaka</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-users"></i> 2,000–3,000 attendees</span>
+                  </div>
+                  <div class="event-pills">
+                    <span class="event-pill">Event Hosting</span>
+                    <span class="event-pill">Public Engagement</span>
+                    <span class="event-pill">Volunteering</span>
+                    <span class="event-pill">Communication</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EVENT 4 — Idea Hunters 4.0 -->
+              <div class="event-entry" data-gallery="3">
+                <div class="event-gallery">
+                  <div class="gallery-track">
+                    <div class="gallery-slide">
+                      <img src="images/Idea1.jpg" alt="Idea Hunters 4.0 — Inter-university marketing case competition">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/Idea2.jpg" alt="Idea Hunters 4.0 — Event management team coordination">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/Idea3.jpg" alt="Idea Hunters 4.0 — Participating teams and judges panel">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/Idea4.jpg" alt="Idea Hunters 4.0 — Award ceremony and closing session">
+                    </div>
+                  </div>
+                  <button class="gallery-arrow prev" aria-label="Previous"><i
+                      class="fa-solid fa-chevron-left"></i></button>
+                  <button class="gallery-arrow next" aria-label="Next"><i
+                      class="fa-solid fa-chevron-right"></i></button>
+                  <div class="gallery-dots"></div>
+                  <div class="gallery-counter">1 / 4</div>
+                </div>
+                <div class="event-info">
+                  <div class="event-tag">Event Admin · Marketing Competition</div>
+                  <h2 class="event-title">Idea Hunters 4.0 — Event Management Team</h2>
+                  <p class="event-desc">
+                    Idea Hunters 4.0 is the flagship inter-university marketing case competition organized by the
+                    ULAB Digital Marketing Club. With participation from over 50 universities nationwide and 300+
+                    attendees, the event was a landmark showcase of strategic marketing talent. Served as part of
+                    the Event Administration &amp; Management Team, contributing to seamless logistics, participant
+                    coordination, and on-ground operations at ULAB.
+                  </p>
+                  <div class="event-meta">
+                    <span class="event-meta-item"><i class="fa-regular fa-calendar"></i> 2025</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> ULAB, Dhaka</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-users"></i> 50+ Universities · 300+
+                      Participants</span>
+                  </div>
+                  <div class="event-pills">
+                    <span class="event-pill">Event Management</span>
+                    <span class="event-pill">Marketing</span>
+                    <span class="event-pill">Logistics</span>
+                    <span class="event-pill">Inter-University</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EVENT 5 — Mind Shift -->
+              <div class="event-entry" data-gallery="4">
+                <div class="event-gallery">
+                  <div class="gallery-track">
+                    <div class="gallery-slide">
+                      <img src="images/Mind1.jpg" alt="Mind Shift 2025 — Marketing competition opening ceremony">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/Mind2.jpg" alt="Mind Shift 2025 — Competing teams presenting strategies">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/Mind3.jpg" alt="Mind Shift 2025 — Judges and audience engagement">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/Mind4.jpg" alt="Mind Shift 2025 — Awards and recognition ceremony">
+                    </div>
+                  </div>
+                  <button class="gallery-arrow prev" aria-label="Previous"><i
+                      class="fa-solid fa-chevron-left"></i></button>
+                  <button class="gallery-arrow next" aria-label="Next"><i
+                      class="fa-solid fa-chevron-right"></i></button>
+                  <div class="gallery-dots"></div>
+                  <div class="gallery-counter">1 / 4</div>
+                </div>
+                <div class="event-info">
+                  <div class="event-tag">Marketing Competition · Event</div>
+                  <h2 class="event-title">Mind Shift — University Marketing Competition</h2>
+                  <p class="event-desc">
+                    Mind Shift is an intra-university marketing competition hosted at ULAB Digital Marketing Club,
+                    designed to challenge
+                    students' strategic thinking, brand analysis, and creative execution. The 2025 edition was
+                    successfully driven with over 200 participants, fostering a competitive yet collaborative
+                    atmosphere that celebrated marketing innovation and real-world problem-solving skills.
+                  </p>
+                  <div class="event-meta">
+                    <span class="event-meta-item"><i class="fa-regular fa-calendar"></i> 2025</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> ULAB, Dhaka</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-users"></i> 200+ Participants</span>
+                  </div>
+                  <div class="event-pills">
+                    <span class="event-pill">Marketing</span>
+                    <span class="event-pill">Strategy</span>
+                    <span class="event-pill">Competition</span>
+                    <span class="event-pill">ULAB</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EVENT 6 — Campus Ambassador ICT Olympic Season 2 -->
+              <div class="event-entry" data-gallery="5">
+                <div class="event-gallery">
+                  <div class="gallery-track">
+                    <div class="gallery-slide">
+                      <img src="images/ICT.jpg" alt="ICT Olympic Bangladesh Season 2 — Campus Ambassador certificate">
+                    </div>
+                  </div>
+                  <button class="gallery-arrow prev" aria-label="Previous"><i
+                      class="fa-solid fa-chevron-left"></i></button>
+                  <button class="gallery-arrow next" aria-label="Next"><i
+                      class="fa-solid fa-chevron-right"></i></button>
+                  <div class="gallery-dots"></div>
+                  <div class="gallery-counter">1 / 1</div>
+                </div>
+                <div class="event-info">
+                  <div class="event-tag">Campus Ambassador · National Event</div>
+                  <h2 class="event-title">Campus Ambassador — ICT Olympic Bangladesh, Season 2</h2>
+                  <p class="event-desc">
+                    Proudly served as the Campus Ambassador for ICT Olympic Bangladesh Season 2, a prestigious
+                    national-level technology competition. This first ambassador role provided the opportunity
+                    to formally represent ULAB on a national platform, actively promoting participation and
+                    awareness across campus. Season 2 drew approximately 10,000+ participants competing
+                    across the entire programme.
+                  </p>
+                  <div class="event-meta">
+                    <span class="event-meta-item"><i class="fa-solid fa-flag"></i> National Level</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> ULAB, Dhaka</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-users"></i> 10,000+ Participants</span>
+                  </div>
+                  <div class="event-pills">
+                    <span class="event-pill">Campus Ambassador</span>
+                    <span class="event-pill">ICT</span>
+                    <span class="event-pill">National Platform</span>
+                    <span class="event-pill">Outreach</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EVENT 7 — Campus Ambassador Kaizen SUST -->
+              <div class="event-entry" data-gallery="6">
+                <div class="event-gallery">
+                  <div class="gallery-track">
+                    <div class="gallery-slide">
+                      <img src="images/CA 1.jpg" alt="Kaizen OmniStart 1.0 — Campus Ambassador at SUST">
+                    </div>
+                    <div class="gallery-slide">
+                      <img src="images/CA2.jpg" alt="Kaizen OmniStart 1.0 — Representing ULAB at SUST event">
+                    </div>
+                  </div>
+                  <button class="gallery-arrow prev" aria-label="Previous"><i
+                      class="fa-solid fa-chevron-left"></i></button>
+                  <button class="gallery-arrow next" aria-label="Next"><i
+                      class="fa-solid fa-chevron-right"></i></button>
+                  <div class="gallery-dots"></div>
+                  <div class="gallery-counter">1 / 2</div>
+                </div>
+                <div class="event-info">
+                  <div class="event-tag">Campus Ambassador · Volunteer</div>
+                  <h2 class="event-title">Campus Ambassador — Kaizen OmniStart 1.0, SUST</h2>
+                  <p class="event-desc">
+                    Appointed as Campus Ambassador for <em>Kaizen OmniStart 1.0</em>, an initiative organized
+                    by the Kaizen Club of Shahjalal University of Science and Technology (SUST). Volunteered
+                    to bridge the two institutions, promoting the event within ULAB and encouraging student
+                    participation. The event was successfully held at SUST expanding cross-university
+                    collaboration and networking opportunities.
+                  </p>
+                  <div class="event-meta">
+                    <span class="event-meta-item"><i class="fa-regular fa-calendar"></i> 2025</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-location-dot"></i> SUST, Sylhet</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-handshake"></i> Cross-University</span>
+                  </div>
+                  <div class="event-pills">
+                    <span class="event-pill">Campus Ambassador</span>
+                    <span class="event-pill">Kaizen Club</span>
+                    <span class="event-pill">SUST</span>
+                    <span class="event-pill">Networking</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- EVENT 8 — Internship ICT Olympic Season 3 -->
+              <div class="event-entry" data-gallery="7">
+                <div class="event-gallery">
+                  <div class="gallery-track">
+                    <div class="gallery-slide">
+                      <img src="images/Intern.jpg"
+                        alt="ICT Olympic Bangladesh Season 3 — Internship team and activities">
+                    </div>
+                  </div>
+                  <button class="gallery-arrow prev" aria-label="Previous"><i
+                      class="fa-solid fa-chevron-left"></i></button>
+                  <button class="gallery-arrow next" aria-label="Next"><i
+                      class="fa-solid fa-chevron-right"></i></button>
+                  <div class="gallery-dots"></div>
+                  <div class="gallery-counter">1 / 1</div>
+                </div>
+                <div class="event-info">
+                  <div class="event-tag">Internship · National Programme</div>
+                  <h2 class="event-title">Intern — ICT Olympic Bangladesh, Season 3</h2>
+                  <p class="event-desc">
+                    Following the success of my Campus Ambassador role in Season 2, I was selected as an official
+                    Intern for ICT Olympic Bangladesh Season 3. During this programme, I was actively involved in
+                    media activities, Q&amp;A documentation, and student interaction engaging with learners
+                    from Class 1 right through to university level across Bangladesh. Also had the distinctive
+                    opportunity to collaborate with and learn from tech specialists, gaining hands-on exposure
+                    to national-scale programme management.
+                  </p>
+                  <div class="event-meta">
+                    <span class="event-meta-item"><i class="fa-regular fa-calendar"></i> 2026</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-flag"></i> Nationwide, Bangladesh</span>
+                    <span class="event-meta-item"><i class="fa-solid fa-laptop"></i> Tech &amp; Media</span>
+                  </div>
+                  <div class="event-pills">
+                    <span class="event-pill">Internship</span>
+                    <span class="event-pill">ICT</span>
+                    <span class="event-pill">Media</span>
+                    <span class="event-pill">Documentation</span>
+                    <span class="event-pill">Nationwide</span>
+                    <span class="event-pill">National-Scale Programme Management</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="events-slider-dots"></div>
+          <div class="events-slider-counter">Event 1 of 8</div>
+        </div><!-- /events-slider-container -->
+      </div><!-- /achieve-block gallery -->
+
+      <!-- ══════════ OTHER ACHIEVEMENTS ══════════ -->
+      <div class="achieve-block">
+        <h2 class="achieve-block-title"><i class="fa-solid fa-trophy"></i> Other <span>Achievements</span></h2>
+        <div class="awards-grid">
+          <div class="award-card reveal">
+            <i class="fa-solid fa-certificate award-icon"></i>
+            <h3>Data Analysis Certificate</h3>
+            <p>Certified by Data Solution 360 after completing a 5-month Job Ready Bootcamp covering Excel, SQL, Power
+              BI, Python &amp; Statistics.</p>
+          </div>
+          <div class="award-card reveal" style="--delay:.08s">
+            <i class="fa-solid fa-trophy award-icon"></i>
+            <h3>EEE Fest 2026 Champion</h3>
+            <p>Secured first place at ULAB's EEE Fest 2026 by showcasing the Smart Helmet project — recognised by the
+              University Vice Chancellor.</p>
+          </div>
+          <div class="award-card reveal" style="--delay:.16s">
+            <i class="fa-solid fa-people-group award-icon"></i>
+            <h3>3,000+ Audience Engagement</h3>
+            <p>Hosted and managed multiple large-scale ULAB campus events as a Communication Office volunteer, engaging
+              2,000–3,000+ attendees.</p>
+          </div>
+          <div class="award-card reveal" style="--delay:.24s">
+            <i class="fa-solid fa-flag award-icon"></i>
+            <h3>National ICT Reach — 10,000+</h3>
+            <p>Represented ULAB as Campus Ambassador for ICT Olympic Bangladesh Season 2, where over 10,000 participants
+              competed nationwide.</p>
+          </div>
+          <div class="award-card reveal" style="--delay:.32s">
+            <i class="fa-solid fa-briefcase award-icon"></i>
+            <h3>ICT Olympic Internship</h3>
+            <p>Selected as an official Intern for ICT Olympic Bangladesh Season 3 — working in media, documentation
+              &amp; student outreach across Bangladesh.</p>
+          </div>
+          <div class="award-card reveal" style="--delay:.4s">
+            <i class="fa-solid fa-handshake award-icon"></i>
+            <h3>Dual Campus Ambassador</h3>
+            <p>Served as Campus Ambassador for two separate national/inter-university programmes — ICT Olympic Season 2
+              and Kaizen OmniStart 1.0 at SUST.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div style="display:flex;justify-content:center;gap:20px;flex-wrap:wrap;" class="reveal">
+        <a href="portfolio.html" class="btn btn-primary"><span>View Projects</span><i
+            class="fa-solid fa-arrow-right"></i></a>
+        <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="section-inner footer-inner">
+      <a href="index.html" class="logo">Talha<span>.</span></a>
+      <p>&copy; <span id="year"></span> Mohammad Talha. All rights reserved.</p>
+      <a href="#" class="back-to-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ── Nav toggle ── */
+    const navToggle = document.getElementById('navToggle');
+    const navLinksEl = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('open');
+      navLinksEl.classList.toggle('open');
+    });
+
+    /* ── Scroll reveal ── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+    /* ══════════════════════════════════════════
+       GALLERY CAROUSEL — each .event-entry is independent
+    ══════════════════════════════════════════ */
+    document.querySelectorAll('.event-entry').forEach(entry => {
+      const track = entry.querySelector('.gallery-track');
+      const slides = entry.querySelectorAll('.gallery-slide');
+      const prevBtn = entry.querySelector('.gallery-arrow.prev');
+      const nextBtn = entry.querySelector('.gallery-arrow.next');
+      const dotsEl = entry.querySelector('.gallery-dots');
+      const counter = entry.querySelector('.gallery-counter');
+      const total = slides.length;
+      let current = 0;
+
+      /* build dots */
+      slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', `Slide ${i + 1}`);
+        d.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(d);
+      });
+
+      function goTo(idx) {
+        current = (idx + total) % total;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        counter.textContent = `${current + 1} / ${total}`;
+        entry.querySelectorAll('.gallery-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+      }
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      /* hide arrows if only 1 slide */
+      if (total <= 1) { prevBtn.style.display = 'none'; nextBtn.style.display = 'none'; dotsEl.style.display = 'none'; counter.style.display = 'none'; }
+
+      /* keyboard support when hovered */
+      entry.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') goTo(current - 1);
+        if (e.key === 'ArrowRight') goTo(current + 1);
+      });
+
+      /* touch swipe */
+      let touchStartX = null;
+      let touchStartY = null;
+      track.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+      track.addEventListener('touchend', e => {
+        if (touchStartX === null || touchStartY === null) return;
+        const diffX = touchStartX - e.changedTouches[0].clientX;
+        const diffY = touchStartY - e.changedTouches[0].clientY;
+        if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+          goTo(current + (diffX > 0 ? 1 : -1));
+        }
+        touchStartX = null;
+        touchStartY = null;
+      });
+    });
+
+    /* ══════════════════════════════════════════
+       EVENTS SLIDER — navigates between different events
+    ══════════════════════════════════════════ */
+    const eventSliderContainer = document.querySelector('.events-slider-container');
+    if (eventSliderContainer) {
+      const track = eventSliderContainer.querySelector('.event-list');
+      const events = eventSliderContainer.querySelectorAll('.event-entry');
+      const prevBtn = eventSliderContainer.querySelector('.events-slider-arrow.prev');
+      const nextBtn = eventSliderContainer.querySelector('.events-slider-arrow.next');
+      const dotsEl = eventSliderContainer.querySelector('.events-slider-dots');
+      const counter = eventSliderContainer.querySelector('.events-slider-counter');
+      const total = events.length;
+      let currentEvent = 0;
+
+      // Build dots
+      events.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'events-slider-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', `Event ${i + 1}`);
+        d.addEventListener('click', () => goToEvent(i));
+        dotsEl.appendChild(d);
+      });
+
+      function goToEvent(idx) {
+        currentEvent = (idx + total) % total;
+        track.style.transform = `translateX(-${currentEvent * 100}%)`;
+        if (counter) {
+          counter.textContent = `Event ${currentEvent + 1} of ${total}`;
+        }
+        eventSliderContainer.querySelectorAll('.events-slider-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === currentEvent);
+        });
+
+        // Trigger reveal in-view check or just ensure active slide gets .in-view
+        events.forEach((el, i) => {
+          if (i === currentEvent) {
+            el.classList.add('in-view');
+          }
+        });
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', () => goToEvent(currentEvent - 1));
+      if (nextBtn) nextBtn.addEventListener('click', () => goToEvent(currentEvent + 1));
+
+      // Touch swipe for events slider (avoid conflicts with internal gallery)
+      let touchStartX = null;
+      let touchStartY = null;
+      track.addEventListener('touchstart', e => {
+        if (e.target.closest('.event-gallery')) return;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }, { passive: true });
+
+      track.addEventListener('touchend', e => {
+        if (touchStartX === null || touchStartY === null) return;
+        if (e.target.closest('.event-gallery')) return;
+        const diffX = touchStartX - e.changedTouches[0].clientX;
+        const diffY = touchStartY - e.changedTouches[0].clientY;
+        if (Math.abs(diffX) > 50 && Math.abs(diffX) > Math.abs(diffY)) {
+          goToEvent(currentEvent + (diffX > 0 ? 1 : -1));
+        }
+        touchStartX = null;
+        touchStartY = null;
+      });
+
+      // Keyboard support
+      eventSliderContainer.addEventListener('keydown', e => {
+        if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
+        if (e.target.closest('.event-gallery')) return;
+        if (e.key === 'ArrowLeft') goToEvent(currentEvent - 1);
+        if (e.key === 'ArrowRight') goToEvent(currentEvent + 1);
+      });
+
+      // Initialize
+      goToEvent(0);
+    }
+  </script>
+  <script src="transition.js"></script>
+</body>
+
+</html>
