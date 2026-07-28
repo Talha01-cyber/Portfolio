@@ -212,20 +212,53 @@ if (contactForm) {
     const label = formSubmit.querySelector('span');
     const icon  = formSubmit.querySelector('i');
 
+    // Check if access key has been configured
+    const accessKeyInput = contactForm.querySelector('input[name="access_key"]');
+    const accessKey = accessKeyInput ? accessKeyInput.value : 'YOUR_WEB3FORMS_ACCESS_KEY';
+    if (accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY' || !accessKey) {
+      alert('Please configure your Web3Forms Access Key in contact.html before sending messages.');
+      return;
+    }
+
     label.textContent = 'Sending...';
     formSubmit.style.opacity = '0.75';
+    formSubmit.disabled = true;
 
-    setTimeout(() => {
-      label.textContent = 'Message Sent';
-      icon.className = 'fa-solid fa-check';
-      formSubmit.style.opacity = '1';
+    const formData = new FormData(contactForm);
 
-      setTimeout(() => {
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(Object.fromEntries(formData))
+    })
+    .then(async (response) => {
+      const result = await response.json();
+      if (response.status === 200 && result.success) {
+        label.textContent = 'Message Sent ✓';
+        icon.className = 'fa-solid fa-check';
         contactForm.reset();
+      } else {
+        console.error(result);
+        label.textContent = 'Send Failed';
+        icon.className = 'fa-solid fa-triangle-exclamation';
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      label.textContent = 'Connection Error';
+      icon.className = 'fa-solid fa-wifi';
+    })
+    .finally(() => {
+      formSubmit.style.opacity = '1';
+      setTimeout(() => {
+        formSubmit.disabled = false;
         label.textContent = 'Send Message';
         icon.className = 'fa-solid fa-paper-plane';
-      }, 2200);
-    }, 900);
+      }, 3000);
+    });
   });
 }
 

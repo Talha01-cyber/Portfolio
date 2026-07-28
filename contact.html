@@ -79,22 +79,28 @@
       </div>
 
       <form class="contact-form reveal" id="contactForm" style="--delay:.1s">
+        <!-- Web3Forms Access Key (Get one from https://web3forms.com) -->
+        <input type="hidden" name="access_key" value="e939a266-f44b-46ce-8b99-39699cf1dc24">
+        <!-- Custom redirection/subject -->
+        <input type="hidden" name="subject" value="New Portfolio Message">
+        <input type="checkbox" name="botcheck" id="" style="display: none;">
+
         <div class="form-row">
           <div class="form-field">
-            <input type="text" id="fname" required placeholder=" ">
+            <input type="text" id="fname" name="name" required placeholder=" ">
             <label for="fname">Your Name</label>
           </div>
           <div class="form-field">
-            <input type="email" id="femail" required placeholder=" ">
+            <input type="email" id="femail" name="email" required placeholder=" ">
             <label for="femail">Your Email</label>
           </div>
         </div>
         <div class="form-field">
-          <input type="text" id="fsubject" required placeholder=" ">
+          <input type="text" id="fsubject" name="subject_line" required placeholder=" ">
           <label for="fsubject">Subject</label>
         </div>
         <div class="form-field">
-          <textarea id="fmessage" rows="5" required placeholder=" "></textarea>
+          <textarea id="fmessage" name="message" rows="5" required placeholder=" "></textarea>
           <label for="fmessage">Message</label>
         </div>
         <button type="submit" class="btn btn-primary full" id="formSubmit">
@@ -134,20 +140,56 @@
     const formSubmit = document.getElementById('formSubmit');
     contactForm.addEventListener('submit', e => {
       e.preventDefault();
+      
       const label = formSubmit.querySelector('span');
       const icon = formSubmit.querySelector('i');
+      
+      // Check if access key has been configured
+      const accessKey = contactForm.querySelector('input[name="access_key"]').value;
+      if (accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY' || !accessKey) {
+        alert('Please configure your Web3Forms Access Key in contact.html before sending messages.');
+        return;
+      }
+
       label.textContent = 'Sending...';
       formSubmit.style.opacity = '0.75';
-      setTimeout(() => {
-        label.textContent = 'Message Sent ✓';
-        icon.className = 'fa-solid fa-check';
+      formSubmit.disabled = true;
+
+      const formData = new FormData(contactForm);
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(Object.fromEntries(formData))
+      })
+      .then(async (response) => {
+        const result = await response.json();
+        if (response.status === 200 && result.success) {
+          label.textContent = 'Message Sent ✓';
+          icon.className = 'fa-solid fa-check';
+          contactForm.reset();
+        } else {
+          console.error(result);
+          label.textContent = 'Send Failed';
+          icon.className = 'fa-solid fa-triangle-exclamation';
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        label.textContent = 'Connection Error';
+        icon.className = 'fa-solid fa-wifi';
+      })
+      .finally(() => {
         formSubmit.style.opacity = '1';
         setTimeout(() => {
-          contactForm.reset();
+          formSubmit.disabled = false;
           label.textContent = 'Send Message';
           icon.className = 'fa-solid fa-paper-plane';
-        }, 2200);
-      }, 900);
+        }, 3000);
+      });
     });
   </script>
   <script src="transition.js"></script>
